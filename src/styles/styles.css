@@ -40,4 +40,13 @@
   width: 50%;
   font-size: 2rem;
 }
+
+.camera__container {
+  position: absolute;
+  top: 0;
+}
+
+video {
+  opacity: 1;
+}
 /*# sourceMappingURL=styles.css.map */
