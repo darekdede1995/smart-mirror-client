@@ -146,7 +146,7 @@ function Microphone(props) {
 
         const output = document.querySelector('.output');
 
-        axios.post('http://localhost:5000/api/users/verify', data)
+        axios.post(process.env.REACT_APP_API_URL + '/api/users/verify', data)
             .then(res => {
                 if (res.data.success) {
                     output.innerHTML = `Wszystko się zgadza, witaj ${res.data.user.username}`;
