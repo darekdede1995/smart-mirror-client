@@ -32,6 +32,8 @@ function Microphone(props) {
 
     function listening() {
 
+        document.querySelector('.statusBar__icon--microphone').style.opacity = 1;
+
         recognition.start();
 
         recognition.onend = () => {
@@ -39,10 +41,10 @@ function Microphone(props) {
         }
 
         recognition.onresult = function (e) {
-            const key = document.querySelector('.key');
-            const password = document.querySelector('.password');
-            const output = document.querySelector('.output');
-            const monitor = document.querySelector('.monitor');
+            const key = document.querySelector('.key--value');
+            const password = document.querySelector('.password--value');
+            const output = document.querySelector('.output--value');
+            const monitor = document.querySelector('.monitor--value');
 
             const current = e.resultIndex;
             let speech = e.results[current][0].transcript.toUpperCase();
@@ -126,8 +128,8 @@ function Microphone(props) {
     }
 
     function clear() {
-        const key = document.querySelector('.key');
-        const password = document.querySelector('.password');
+        const key = document.querySelector('.key--value');
+        const password = document.querySelector('.password--value');
 
         setNewUser(false);
         setNewUserKey('');
@@ -144,7 +146,7 @@ function Microphone(props) {
 
     function verifyUser(data) {
 
-        const output = document.querySelector('.output');
+        const output = document.querySelector('.output--value');
 
         axios.post(process.env.REACT_APP_API_URL + '/api/users/verify', data)
             .then(res => {
@@ -164,21 +166,23 @@ function Microphone(props) {
     }
 
     return (
-        <div hidden={existUsers} className="microphone__container">
+        <div hidden={existUsers} className="microphone">
             <div className='output__container'>
-                <div className="output">
+                <div className="output--value">
                     {newUser ? `Cześć, jesteś tu nowy? \n Przeliteruj mi swój 6-cyfrowy identyfikator` : ''}
                 </div>
             </div>
-            <div className='key__container' style={{ display: newUserKey ? 'flex' : 'none' }}>
-                <div className="key--header">Twój identyfikator: </div>
-                <div className="key"></div>
+            <div className="auth_container">
+                <div className='key__container' style={{ display: newUserKey ? 'flex' : 'none' }}>
+                    <div className="key--header">Twój identyfikator: </div>
+                    <div className="key--value"></div>
+                </div>
+                <div className='password__container' style={{ display: newUserPassword ? 'flex' : 'none' }}>
+                    <div className="password--header">Twój klucz: </div>
+                    <div className="password--value"></div>
+                </div>
             </div>
-            <div className='password__container' style={{ display: newUserPassword ? 'flex' : 'none' }}>
-                <div className="password--header">Twój klucz: </div>
-                <div className="password"></div>
-            </div>
-            <div className='monitor'></div>
+            <div className='monitor--value'></div>
         </div>
     );
 }

@@ -1,8 +1,9 @@
-.camera__container {
+.camera{
     position: absolute;
     top: 0;
 }
 
-video{
-    opacity: 1;
+.video--element{
+    opacity: 0;
+    z-index: -1;
 }

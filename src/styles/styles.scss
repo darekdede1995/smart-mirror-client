@@ -1,2 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400&display=swap');
+
 @import 'microphone';
 @import 'camera';
+@import 'tasks';
+@import 'statusBar';
+@import 'time';
+@import 'events';
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    letter-spacing: 0.1em;
+    background-color: black;
+    overflow: hidden;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+}
+
+.data {
+    position: absolute;
+    top: 0;
+    left: 3%;
+    width: 100%;
+}

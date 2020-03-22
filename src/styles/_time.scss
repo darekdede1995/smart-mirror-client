@@ -1,0 +1,19 @@
+.time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1vw;
+    width: 20%;
+}
+
+.time--value {
+    text-align: center;
+    font-size: 8em;
+    width: 100%;
+}
+
+.date--value {
+    text-align: center;
+    font-size: 1.6em;
+    width: 100%;
+}
