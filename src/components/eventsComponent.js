@@ -14,7 +14,7 @@ function Events(props) {
         if (getEventsInPeriod(props.events, 0, 0, false)[0])
             return (
                 <div className="events__container">
-                    <div className="events--header">Today:</div>
+                    <div className="events--header">Dziś:</div>
                     {getEventsInPeriod(props.events, 0, 0, false).map((event) => {
                         return <li key={event.id}>{event.event}</li>
                     })}
@@ -26,7 +26,7 @@ function Events(props) {
         if (getEventsInPeriod(props.events, 1, 0, false)[0])
             return (
                 <div className="events__container">
-                    <div className="events--header">Tommorow:</div>
+                    <div className="events--header">Jutro:</div>
                     {getEventsInPeriod(props.events, 1, 0, false).map((event) => {
                         return <li key={event.id}>{event.event}</li>
                     })}
@@ -38,7 +38,7 @@ function Events(props) {
         if (getEventsInPeriod(props.events, 2, 4, true)[0])
             return (
                 <div className="events__container">
-                    <div className="events--header">Weekly:</div>
+                    <div className="events--header">W przeciągu tygodnia:</div>
                     {getEventsInPeriod(props.events, 2, 4, true).map((event) => {
                         return <li key={event.id}>{event.event}</li>
                     })}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getFromStorage, setInStorage } from '../utils/storage';
+import { getFromStorage, setInStorage, clearStorage } from '../utils/storage';
 import axios from 'axios';
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
@@ -110,7 +110,7 @@ function Microphone(props) {
                 output.innerHTML = ``;
             }
 
-            if (speech.includes('NOWY')) {
+            if (speech.includes('NOWY') || speech.includes('DODAJ')) {
                 newLocalUser = true;
                 setNewUser(true);
             }
@@ -123,6 +123,12 @@ function Microphone(props) {
 
             if (speech.includes('NA RAZIE') || speech.includes('KONIEC') || speech.includes('WYLOGUJ')) {
                 props.logout();
+            }
+
+            if (speech.includes('USTAWIENIA DOMYŚLNE') || speech.includes('RESET FABRYCZNY')) {
+                props.logout();
+                clearStorage('mirror-users');
+                clearStorage('mirror-current-user');
             }
         }
     }
