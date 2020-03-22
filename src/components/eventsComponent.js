@@ -11,40 +11,40 @@ function Events(props) {
     );
 
     function Today() {
-        if(getEventsInPeriod(props.events, 0, 0, false)[0])
-        return (
-            <div className="events__container">
-            <div className="events--header">Today:</div>
-                {getEventsInPeriod(props.events, 0, 0, false).map((event) => {
-                    return <li>{event}</li>
-                })}
-            </div>
-        );
-        return('');
+        if (getEventsInPeriod(props.events, 0, 0, false)[0])
+            return (
+                <div className="events__container">
+                    <div className="events--header">Today:</div>
+                    {getEventsInPeriod(props.events, 0, 0, false).map((event) => {
+                        return <li key={event.id}>{event.event}</li>
+                    })}
+                </div>
+            );
+        return ('');
     }
     function Tommorow() {
-        if(getEventsInPeriod(props.events, 1, 0, false)[0])
-        return (
-            <div className="events__container">
-            <div className="events--header">Tommorow:</div>
-                {getEventsInPeriod(props.events, 1, 0, false).map((event) => {
-                    return <li>{event}</li>
-                })}
-            </div>
-        );
-        return('');
+        if (getEventsInPeriod(props.events, 1, 0, false)[0])
+            return (
+                <div className="events__container">
+                    <div className="events--header">Tommorow:</div>
+                    {getEventsInPeriod(props.events, 1, 0, false).map((event) => {
+                        return <li key={event.id}>{event.event}</li>
+                    })}
+                </div>
+            );
+        return ('');
     }
     function Weekly() {
-        if(getEventsInPeriod(props.events, 2, 4, true)[0])
-        return (
-            <div className="events__container">
-            <div className="events--header">Weekly:</div>
-                {getEventsInPeriod(props.events, 2, 4, true).map((event) => {
-                    return <li>{event}</li>
-                })}
-            </div>
-        );
-        return('');
+        if (getEventsInPeriod(props.events, 2, 4, true)[0])
+            return (
+                <div className="events__container">
+                    <div className="events--header">Weekly:</div>
+                    {getEventsInPeriod(props.events, 2, 4, true).map((event) => {
+                        return <li key={event.id}>{event.event}</li>
+                    })}
+                </div>
+            );
+        return ('');
     }
 
 }
@@ -86,11 +86,12 @@ function getEventsInPeriod(events, skip, period, dayname) {
         if (eventDate.getTime() > startDate.getTime() && eventDate.getTime() < finishDate.getTime()) {
             if (dayname) {
                 const day = (DayName[eventDate.getDay()]);
-                result.push(`${day} - ${formatDigits(eventDate.getUTCHours() + 1)}:${formatDigits(eventDate.getUTCMinutes())} - ${event.summary}`);
+                result.push({event: `${day} - ${formatDigits(eventDate.getUTCHours() + 1)}:${formatDigits(eventDate.getUTCMinutes())} - ${event.summary}`, id: event.id});
             } else {
-                result.push(`${formatDigits(eventDate.getUTCHours() + 1)}:${formatDigits(eventDate.getUTCMinutes())} - ${event.summary}`);
+                result.push({event: `${formatDigits(eventDate.getUTCHours() + 1)}:${formatDigits(eventDate.getUTCMinutes())} - ${event.summary}`, id: event.id});
             }
         }
+        return ''
     })
     return result;
 }

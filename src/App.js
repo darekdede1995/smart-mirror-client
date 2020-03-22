@@ -7,14 +7,12 @@ import Time from './components/timeComponent';
 import Events from './components/eventsComponent';
 import StatusBar from './components/statusBarComponent';
 import { getFromStorage, setInStorage, clearStorage } from './utils/storage';
-import { useEffect } from 'react';
 require('dotenv').config()
 
 
 function App() {
 
   const [login, setLogin] = useState(false);
-  const [logout, setLogout] = useState(false);
   const [users, setUsers] = useState(false);
   const [loadData, setLoadData] = useState(false);
   const [events, setEvents] = useState([]);
@@ -24,7 +22,7 @@ function App() {
       <StatusBar />
       <Microphone logout={logoutFunc} loginOn={loginOn} />
       <Camera login={login} users={users} faceRecognized={faceRecognized} loginOff={loginOff} />
-      {loadData ? <Data/> : ''}
+      {loadData ? <Data /> : ''}
     </div>
   );
 
@@ -33,7 +31,7 @@ function App() {
       setUsers(getFromStorage('mirror-users'));
       setLogin(true);
     } else {
-      const output = document.querySelector('.output');
+      const output = document.querySelector('.output--value');
       output.innerHTML = 'Nie dodano żadnych użytkowników';
     }
   }
@@ -44,17 +42,24 @@ function App() {
 
   function logoutFunc() {
     clearStorage('mirror-current-user');
-    setLogout(true);
+    setLoadData(false);
+    setEvents([]);
   }
 
   function faceRecognized(id) {
-    const current = getFromStorage('mirror-users').reduce((user) => user._id === id);
-    setInStorage('mirror-current-user', current);    
-    const currentUser = getFromStorage('mirror-current-user');
-    getEvents(currentUser);
+
+    getFromStorage('mirror-users').map((user) => {
+      if (id.includes(user._id)) {
+        setInStorage('mirror-current-user', user);
+        const currentUser = getFromStorage('mirror-current-user');
+        getEvents(currentUser);
+      }
+      return ''
+    });
+
   }
 
-   function getEvents(user) {
+  function getEvents(user) {
 
     axios.post(process.env.REACT_APP_API_URL + '/api/users/getEvents', user)
       .then(res => {

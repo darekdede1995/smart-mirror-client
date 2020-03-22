@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getFromStorage, setInStorage } from '../utils/storage';
 import axios from 'axios';
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -115,13 +115,13 @@ function Microphone(props) {
                 setNewUser(true);
             }
 
-            if (speech.includes('CZEŚĆ') || speech.includes('WITAJ')) {
+            if (speech.includes('CZEŚĆ') || speech.includes('WITAJ') || speech.includes('ZALOGUJ') || speech.includes('SIEMA')) {
                 clear();
                 props.loginOn();
             }
 
 
-            if (speech.includes('NARAZIE')) {
+            if (speech.includes('NA RAZIE') || speech.includes('KONIEC') || speech.includes('WYLOGUJ')) {
                 props.logout();
             }
         }

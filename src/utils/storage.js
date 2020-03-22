@@ -27,7 +27,7 @@ export function setInStorage(key, obj) {
 
 export function clearStorage(key) {
     try {
-        localStorage.remove(key);
+        localStorage.removeItem(key);
     } catch (err) {
         console.log(err);
     }

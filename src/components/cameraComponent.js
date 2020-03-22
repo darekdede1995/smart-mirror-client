@@ -16,6 +16,7 @@ function Camera(props) {
 
   async function start() {
     var video = document.querySelector('.video--element');
+    var counter = document.querySelector('.statusBar__icon--counter');
     const labeledFaceDescriptors = await loadLabeledImages()
     const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
 
@@ -34,7 +35,7 @@ function Camera(props) {
       faceapi.matchDimensions(canvas, displaySize)
       var myInterval = setInterval(async () => {
 
-        if (iterator > 10) {
+        if (iterator === 5) {
           output.innerHTML = 'Wybacz ale nie mogę Cię rozpoznać';
           clearInterval(myInterval);
           video.removeEventListener('play', recognizeFace);
@@ -45,8 +46,9 @@ function Camera(props) {
         const detections = await faceapi.detectAllFaces(video).withFaceLandmarks().withFaceDescriptors()
         const resizedDetections = faceapi.resizeResults(detections, displaySize)
         const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
-        results.forEach((result, i) => {
+        results.forEach((result) => {
           iterator++;
+          counter.innerHTML = iterator;
           if (!result.toString().includes('unknown')) {
             props.loginOff();
             props.faceRecognized(result.toString());
@@ -60,8 +62,10 @@ function Camera(props) {
   }
 
   function stopCapture() {
+    var counter = document.querySelector('.statusBar__icon--counter');
     const video = document.querySelector('.video--element');
     document.querySelector('.statusBar__icon--camera').style.opacity = 0;
+    counter.innerHTML = '';
     let tracks = video.srcObject.getTracks();
     tracks.forEach(function (track) {
       track.stop();
