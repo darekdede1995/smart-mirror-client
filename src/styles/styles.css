@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Anton&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400&display=swap");
 .microphone {
   width: 100%;
@@ -155,6 +154,56 @@
   margin: 5% 0%;
 }
 
+.weather__container {
+  position: absolute;
+  width: 15%;
+  top: 15vh;
+  right: 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.weather--main,
+.weather--info,
+.weather--place {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weather--main {
+  font-size: 2em;
+}
+
+.weather--main img {
+  height: 1.5em;
+  padding: 5% 10% 5% 0%;
+}
+
+.weather--info {
+  font-size: 1.5em;
+}
+
+.weather--info img {
+  height: 1.5em;
+  padding: 5% 5% 5% 10%;
+}
+
+.weather--place {
+  font-size: 2em;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -162,11 +211,10 @@ body {
   height: 100vh;
   color: white;
   text-align: center;
-  font-family: 'Anton', sans-serif;
-  /* font-family: 'Roboto', sans-serif; */
-  letter-spacing: 0.1em;
   background-color: black;
   overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
 }
 
 .app {

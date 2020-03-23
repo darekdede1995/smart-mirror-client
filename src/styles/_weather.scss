@@ -1,0 +1,38 @@
+.weather__container {
+    position: absolute;
+    width: 15%;
+    top: 15vh;
+    right: 5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.weather--main,
+.weather--info,
+.weather--place {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather--main {
+    font-size: 2em;
+
+    img {
+        height: 1.5em;
+        padding: 5% 10% 5% 0%;
+    }
+}
+
+.weather--info {
+    font-size: 1.5em;
+
+    img {
+        height: 1.5em;
+        padding: 5% 5% 5% 10%;
+    }
+}
+
+.weather--place {
+    font-size: 2em;
+}

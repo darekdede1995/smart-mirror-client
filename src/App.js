@@ -4,6 +4,7 @@ import axios from 'axios';
 import Microphone from './components/microphoneComponent';
 import Camera from './components/cameraComponent';
 import Time from './components/timeComponent';
+import Weather from './components/weatherComponent';
 import Events from './components/eventsComponent';
 import StatusBar from './components/statusBarComponent';
 import { getFromStorage, setInStorage, clearStorage } from './utils/storage';
@@ -76,6 +77,7 @@ function App() {
       <div className="data">
         <Time />
         <Events events={events} />
+        <Weather />
       </div>
     )
   }
