@@ -1,0 +1,24 @@
+.data {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 96%;
+    display: flex;
+}
+
+.data--left {
+    position: absolute;
+    width: 30%;
+}
+
+.data--middle {
+    position: absolute;
+    left: 30%;
+    width: 50%;
+}
+
+.data--right {
+    position: absolute;
+    right: 0;
+    width: 20%;
+}

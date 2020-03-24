@@ -1,0 +1,21 @@
+.steps {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 10%;
+}
+
+.steps--icon {
+    font-size: 2em;
+
+    img {
+        height: 1.8em;
+    }
+}
+
+.steps--info {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    font-size: 1.5em;
+}

@@ -6,6 +6,9 @@
 @import 'time';
 @import 'events';
 @import 'weather';
+@import 'news';
+@import 'data';
+@import 'steps';
 
 body {
     margin: 0;
@@ -25,9 +28,11 @@ body {
     height: 100vh;
 }
 
-.data {
+button {
     position: absolute;
-    top: 0;
-    left: 3%;
-    width: 100%;
+    top: 50vh;
+    background-color: red;
+    border: red;
+    width: 100px;
+    height: 100px;
 }

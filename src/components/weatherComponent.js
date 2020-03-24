@@ -1,43 +1,12 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useEffect } from 'react';
 
-function Weather() {
-  const [weather, setWeather] = useState('');
-
-  useEffect(() => {
-    getWeather();
-  }, []);
+function Weather(props) {
 
   return (
     <div className="weather">
-      <div>
-        <img src={'../public/resources/weather-icons/01d.svg'} alt="" />
-      </div>
-      {weather ? <WeatherElement weather={weather} /> : ''}
+      {props.weather ? <WeatherElement weather={props.weather} /> : ''}
     </div>
   );
-  function getWeather() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        axios
-          .get(
-            `http://api.openweathermap.org/data/2.5/weather?lat=${pos.lat}&lon=${pos.lng}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-          )
-          .then(res => {
-            setWeather(res.data);
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      });
-    }
-  }
 }
 
 function WeatherElement(props) {
@@ -64,9 +33,5 @@ function WeatherElement(props) {
     </div>
   );
 }
-
-//ikonki dosciagac
-
-// 'https://openweathermap.org/current'
 
 export default Weather;
