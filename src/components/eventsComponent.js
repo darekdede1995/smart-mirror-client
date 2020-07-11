@@ -88,14 +88,14 @@ function getEventsInPeriod(events, skip, period, dayname) {
         const day = DayName[eventDate.getDay()];
         result.push({
           event: `${day} - ${formatDigits(
-            eventDate.getUTCHours() + 1
-          )}:${formatDigits(eventDate.getUTCMinutes())} - ${event.summary}`,
+            eventDate.getHours() + 1
+          )}:${formatDigits(eventDate.getMinutes())} - ${event.summary}`,
           id: event.id
         });
       } else {
         result.push({
-          event: `${formatDigits(eventDate.getUTCHours() + 1)}:${formatDigits(
-            eventDate.getUTCMinutes()
+          event: `${formatDigits(eventDate.getHours() + 1)}:${formatDigits(
+            eventDate.getMinutes()
           )} - ${event.summary}`,
           id: event.id
         });

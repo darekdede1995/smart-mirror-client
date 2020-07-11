@@ -119,6 +119,7 @@ function Microphone(props) {
 
       if (
         speech.includes('CZEŚĆ') ||
+        speech.includes('HEJ') ||
         speech.includes('WITAJ') ||
         speech.includes('ZALOGUJ') ||
         speech.includes('SIEMA')
@@ -157,8 +158,22 @@ function Microphone(props) {
         props.nextNews(-1);
       }
 
-      if (speech.includes('WIADOMOŚCI')) {
+      if (speech.includes('WIADOMOŚCI') || speech.includes('WIADOMOŚĆ')) {
         props.news();
+      }
+
+      if (speech.includes('OTWÓRZ') || speech.includes('ZAMKNIJ')) {
+        props.newsFrame();
+      }
+
+      if (speech.includes('DÓŁ')) {
+        props.scroll(1);
+      }
+      if (speech.includes('GÓRĘ')) {
+        props.scroll(-1);
+      }
+      if (speech.includes('STOP')) {
+        props.scroll(0);
       }
     };
   }

@@ -145,6 +145,7 @@
 }
 
 .events li {
+  padding: 2% 0% 2% 0%;
   list-style: none;
 }
 
@@ -221,6 +222,12 @@
   font-size: 1.5em;
 }
 
+iframe {
+  width: 100%;
+  height: 85vh;
+  background-color: white;
+}
+
 .data {
   position: absolute;
   top: 2%;
@@ -233,13 +240,13 @@
 
 .data--left {
   position: absolute;
-  width: 30%;
+  width: 25%;
 }
 
 .data--middle {
   position: absolute;
-  left: 30%;
-  width: 50%;
+  left: 25%;
+  width: 55%;
 }
 
 .data--right {
